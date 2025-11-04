@@ -1,27 +1,22 @@
-﻿namespace project11032025
+﻿using System;
+
+namespace project11032025
 {
     internal class Program
     {
-        /*
-         * пользователь в бесконечном цикле осуществляет
-         * построчный ввод. 
-         * цикл останавливается при условие ввода пустой строки
-         * или стоки "exit" или "stop"
-         * после чего пользователю выводится количество символов, которые он задал считать
-         * */  
-
         static void Main(string[] args)
         {
-            Console.WriteLine("какой символ будем считать в тексте?");
+            Console.WriteLine("Какой символ будем считать в тексте?");
             char symbol = char.Parse(Console.ReadLine());
+            Console.WriteLine("Осуществите ввод текста построчно.");
+            Console.WriteLine("Для завершения ввода введите пустую строку, 'stop' или 'exit'");
 
-            Console.WriteLine("осуществите ввод текста построчно");
             int countOfChar = 0;
 
             while (true)
             {
                 string temp = Console.ReadLine();
-                if (temp == "" || temp == "stop" || temp == "exit")
+                if (string.IsNullOrEmpty(temp) || temp.ToLower() == "stop" || temp.ToLower() == "exit")
                     break;
 
                 foreach (char ch in temp)
@@ -29,9 +24,9 @@
                     if (ch == symbol)
                         countOfChar++;
                 }
-
             }
-            Console.WriteLine("вы ввели " + countOfChar + " символов " + symbol);
+
+            Console.WriteLine($"Вы ввели {countOfChar} символов '{symbol}'");
         }
     }
 }
